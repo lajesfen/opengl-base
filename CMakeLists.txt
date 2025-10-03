@@ -37,7 +37,7 @@ add_executable(${PROJECT_NAME})
 
 target_sources(${PROJECT_NAME} PRIVATE
         src/main.cpp
-        src/game.cpp
+        src/program.cpp
         src/shader.cpp
         src/resource_manager.cpp
         src/texture.cpp
@@ -54,6 +54,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         "${EXTERNAL_DIR}/glad/include"
 )
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE RESOURCES="${PROJECT_SOURCE_DIR}/res")
+target_compile_definitions(${PROJECT_NAME} PRIVATE RESOURCES="${PROJECT_SOURCE_DIR}/resources")
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad glm::glm OpenGL::GL)

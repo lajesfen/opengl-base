@@ -1,8 +1,8 @@
-#include "game.h"
+#include "program.h"
 
 int main() {
-    Game BaseGame;
-    BaseGame.Run();
+    Program BaseProgram;
+    BaseProgram.Run();
 
     return 0;
 }

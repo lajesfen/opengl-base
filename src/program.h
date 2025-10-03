@@ -6,21 +6,25 @@
 
 #include "config.h"
 #include "window.h"
+#include "resource_manager.h"
 
-enum GameState {
-    MENU,
+#include "glm/glm.hpp"
+#include "glm/ext/matrix_clip_space.hpp"
+
+enum ProgramState {
     ACTIVE,
     INACTIVE
 };
 
-class Game {
+class Program {
 private:
     Window m_window;
-    GameState state = GameState::MENU;
+    ProgramState state = ProgramState::ACTIVE;
+    unsigned int VAO, VBO;
 
 public:
-    Game();
-    ~Game();
+    Program();
+    ~Program();
 
     void Init();
     void Run();

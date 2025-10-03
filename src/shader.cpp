@@ -1,20 +1,12 @@
 #include "shader.h"
 
-Shader::~Shader() {
-    if (this->id) {
-        glDeleteProgram(this->id);
-    }
-}
-
 void Shader::Create(const char* vertexSource, const char* fragmentSource) {
-    unsigned int vertexId, fragmentId;
-
-    vertexId = glCreateShader(GL_VERTEX_SHADER);
+    unsigned int vertexId = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexId, 1, &vertexSource, nullptr);
     glCompileShader(vertexId);
     CheckCompileErrors(vertexId, "VERTEX");
 
-    fragmentId = glCreateShader(GL_FRAGMENT_SHADER);
+    unsigned int fragmentId = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentId, 1, &fragmentSource, nullptr);
     glCompileShader(fragmentId);
     CheckCompileErrors(fragmentId, "FRAGMENT");

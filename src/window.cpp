@@ -1,5 +1,7 @@
 #include "window.h"
 
+#include <resource_manager.h>
+
 Window::Window(const char *title, unsigned int width, unsigned int height): m_title(title), m_width(width), m_height(height) {
     if (!glfwInit()) {
         return;

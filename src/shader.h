@@ -11,7 +11,6 @@ private:
     static int CheckCompileErrors(const unsigned int& id, const std::string& type);
 public:
     Shader() = default;
-    ~Shader();
 
     void Create(const char* vertexSource, const char* fragmentSource);
     Shader& Use();
