@@ -39,7 +39,7 @@ target_sources(${PROJECT_NAME} PRIVATE
         src/main.cpp
         src/program.cpp
         src/shader.cpp
-        src/resource_manager.cpp
+        src/assets_manager.cpp
         src/texture.cpp
         src/window.cpp
 

@@ -1,12 +1,12 @@
 #include "shader.h"
 
 void Shader::Create(const char* vertexSource, const char* fragmentSource) {
-    unsigned int vertexId = glCreateShader(GL_VERTEX_SHADER);
+    unsigned const int vertexId = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexId, 1, &vertexSource, nullptr);
     glCompileShader(vertexId);
     CheckCompileErrors(vertexId, "VERTEX");
 
-    unsigned int fragmentId = glCreateShader(GL_FRAGMENT_SHADER);
+    unsigned const int fragmentId = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentId, 1, &fragmentSource, nullptr);
     glCompileShader(fragmentId);
     CheckCompileErrors(fragmentId, "FRAGMENT");
@@ -22,7 +22,19 @@ void Shader::Create(const char* vertexSource, const char* fragmentSource) {
     glDeleteShader(fragmentId);
 }
 
-Shader &Shader::Use() {
+void Shader::setBool(const std::string& name, bool value) const {
+    glUniform1i(glGetUniformLocation(id, name.c_str()), (int)value);
+}
+
+void Shader::setInt(const std::string& name, int value) const {
+    glUniform1i(glGetUniformLocation(id, name.c_str()), value);
+}
+
+void Shader::setFloat(const std::string& name, float value) const {
+    glUniform1f(glGetUniformLocation(id, name.c_str()), (float)value);
+}
+
+Shader& Shader::Use() {
     glUseProgram(this->id);
     return *this;
 }

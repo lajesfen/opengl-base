@@ -1,15 +1,8 @@
 #pragma once
 
-#include <glad/gl.h>
-#include <GLFW/glfw3.h>
-#include <iostream>
-
 #include "config.h"
 #include "window.h"
-#include "resource_manager.h"
-
-#include "glm/glm.hpp"
-#include "glm/ext/matrix_clip_space.hpp"
+#include "assets_manager.h"
 
 enum ProgramState {
     ACTIVE,
@@ -18,9 +11,9 @@ enum ProgramState {
 
 class Program {
 private:
-    Window m_window;
+    Window window;
     ProgramState state = ProgramState::ACTIVE;
-    unsigned int VAO, VBO;
+    unsigned int VAO{}, VBO{}, EBO{};
 
 public:
     Program();

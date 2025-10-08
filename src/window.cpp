@@ -1,8 +1,6 @@
 #include "window.h"
 
-#include <resource_manager.h>
-
-Window::Window(const char *title, unsigned int width, unsigned int height): m_title(title), m_width(width), m_height(height) {
+Window::Window(const char *title, unsigned int width, unsigned int height): title(title), width(width), height(height) {
     if (!glfwInit()) {
         return;
     }
@@ -16,13 +14,13 @@ Window::Window(const char *title, unsigned int width, unsigned int height): m_ti
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-    m_handle = glfwCreateWindow((int)m_width, (int)m_height, m_title, nullptr, nullptr);
-    if (!m_handle) {
+    handle = glfwCreateWindow((int)width, (int)height, title, nullptr, nullptr);
+    if (!handle) {
         glfwTerminate();
         return;
     }
 
-    glfwMakeContextCurrent(m_handle);
+    glfwMakeContextCurrent(handle);
     glfwSwapInterval(1);
 
     if (!gladLoadGL(glfwGetProcAddress)) {
@@ -34,12 +32,12 @@ Window::Window(const char *title, unsigned int width, unsigned int height): m_ti
 
 Window::~Window() {
     std::cout << "Destroying window..." << '\n';
-    glfwDestroyWindow(m_handle);
+    glfwDestroyWindow(handle);
     glfwTerminate();
 }
 
 bool Window::ShouldClose() {
-    return glfwWindowShouldClose(m_handle);
+    return glfwWindowShouldClose(handle);
 }
 
 void Window::PollEvents() {
@@ -47,21 +45,21 @@ void Window::PollEvents() {
 }
 
 void Window::SwapBuffers() {
-    glfwSwapBuffers(m_handle);
+    glfwSwapBuffers(handle);
 }
 
 GLFWwindow* Window::GetHandle() const {
-    return m_handle;
+    return handle;
 }
 
 unsigned int Window::GetWidth() const {
-    return m_width;
+    return width;
 }
 
 unsigned int Window::GetHeight() const {
-    return m_height;
+    return height;
 }
 
 const char* Window::GetTitle() const {
-    return m_title;
+    return title;
 }

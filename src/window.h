@@ -6,10 +6,10 @@
 
 class Window {
 private:
-    GLFWwindow* m_handle;
-    unsigned int m_width;
-    unsigned int m_height;
-    const char* m_title;
+    GLFWwindow* handle;
+    unsigned int width;
+    unsigned int height;
+    const char* title;
 
 public:
     Window(const char* title, unsigned int width, unsigned int height);

@@ -3,12 +3,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <fstream>
 #include <sstream>
 
 class FileSystem {
 public:
-    static std::string ParseFile(const std::string &filePath) {
+    static std::string ParseFile(const std::string& filePath) {
         std::ifstream file(filePath);
         if (!file.is_open()) {
             std::cerr << "Failed to open file: " << filePath << std::endl;

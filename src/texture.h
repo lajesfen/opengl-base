@@ -2,7 +2,7 @@
 
 class Texture {
 private:
-// public:
-//     Texture();
-//     ~Texture();
+public:
+     Texture();
+     ~Texture();
 };
